@@ -18,7 +18,7 @@ class Converter
     @int_to_roman = @roman_to_int.invert
   end
 
-  def to_roman(num)
+  def roman(num)
     result = ''
     @int_to_roman.keys.sort.reverse.each do |value|
       while num >= value
@@ -29,7 +29,7 @@ class Converter
     result
   end
 
-  def to_int(roman)
+  def int(roman)
     result = 0
     i = 0
     while i < roman.length
@@ -57,12 +57,12 @@ loop do
   when 1
     puts "Enter a Roman numeral (eg 'MCMXC'): "
     roman_input = gets.chomp.upcase
-    puts "The result of conversion to an integer: #{converter.to_int(roman_input)}"
+    puts "The result of conversion to an integer: #{converter.int(roman_input)}"
   when 2
     puts "Enter an integer (between 1 and 3999): "
     int_input = gets.chomp.to_i
     if int_input >= 1 && int_input < 4000
-      puts "The result of conversion to Roman numerals: #{converter.to_roman(int_input)}"
+      puts "The result of conversion to Roman numerals: #{converter.roman(int_input)}"
     else
       puts "Error! The number entered is not in the range 1 to 3999."
     end
